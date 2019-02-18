@@ -1,6 +1,6 @@
 FROM erlang:21-slim
 
-LABEL maintainer="efg.river@gmail" \
+LABEL maintainer="efg.river@gmail.com" \
       version="0.1" \
       description="elic docker image consists of elixir, nodejs, phoenix builder."
 
@@ -20,6 +20,9 @@ ENV ELIXIR_VERSION="v1.8.1" \
     PHOENIX_VERSION="1.4.1" \
     NODE_MAJOR_VERSION="10" \
     LANG=C.UTF-8
+
+# specify debconf no-warning  (see: http://manpages.ubuntu.com/manpages/xenial/man7/debconf.7.html)
+ENV DEBCONF_NOWARNINGS=yes
 
 RUN apt-get update
 RUN apt-get -y install curl
