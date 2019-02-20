@@ -4,17 +4,6 @@ LABEL maintainer="efg.river@gmail.com" \
       version="0.1" \
       description="elic docker image consists of elixir, nodejs, phoenix builder."
 
-# RUN mkdir -p /usr/local/src/elixir
-# RUN mkdir -p /usr/local/lib/elixir
-# RUN useradd -rm -d /home/elic -s /bin/bash -g root elic
-# RUN chown -R elic /usr/local/src/elixir && chmod -R 755 /usr/local/src/elixir
-# RUN chown -R elic /usr/local/lib/elixir && chmod -R 755 /usr/local/lib/elixir
-# RUN chown -R elic /usr/local/bin/
-# RUN chown -R elic /usr/local/share/man
-
-# USER elic
-# WORKDIR /home/elic
-
 # specify versions, elixir expects utf8 in specific.
 ENV ELIXIR_VERSION="v1.8.1" \
     PHOENIX_VERSION="1.4.1" \
@@ -47,6 +36,7 @@ RUN curl -sL https://deb.nodesource.com/setup_${NODE_MAJOR_VERSION}.x | bash -
 RUN apt-get -y install nodejs yarn
 RUN apt-get install -y inotify-tools
 RUN mix local.hex --force
+RUN mix local.rebar --force
 
 CMD ["iex"]
 
