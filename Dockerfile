@@ -44,6 +44,9 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN cat /etc/os-release
 RUN curl -sL https://deb.nodesource.com/setup_${NODE_MAJOR_VERSION}.x | bash -
+RUN apt-get -y install nodejs yarn
+RUN apt-get install -y inotify-tools
+RUN mix local.hex --force
 
 CMD ["iex"]
 
