@@ -4,6 +4,7 @@
    - elixir 1.8.1
    - mix archive phx.new 1.4.1
    - node 10
+   - erlang 21
 
 ## Commands
 
