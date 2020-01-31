@@ -1,9 +1,9 @@
 ## About
 
 * Elixir/Phoenix's base docker image, consists of following
-   - elixir 1.8.1
+   - elixir 1.9.4
    - mix archive phx.new 1.4.1
-   - node 10
+   - node 12
    - erlang 21
 
 ## Commands

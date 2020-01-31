@@ -5,9 +5,9 @@ LABEL maintainer="efg.river@gmail.com" \
       description="elic docker image consists of elixir, nodejs, phoenix builder."
 
 # specify versions, elixir expects utf8 in specific.
-ENV ELIXIR_VERSION="v1.8.1" \
+ENV ELIXIR_VERSION="v1.9.4" \
     PHOENIX_VERSION="1.4.1" \
-    NODE_MAJOR_VERSION="10" \
+    NODE_MAJOR_VERSION="12" \
     LANG=C.UTF-8
 
 # specify debconf no-warning  (see: http://manpages.ubuntu.com/manpages/xenial/man7/debconf.7.html)
@@ -20,9 +20,9 @@ RUN apt-get -y install gnupg
 RUN apt-get install -y apt-transport-https
 RUN set -xe \
   && ELIXIR_DOWNLOAD_URL="https://github.com/elixir-lang/elixir/archive/${ELIXIR_VERSION}.tar.gz" \
-  && ELIXIR_DOWNLOAD_SHA256="de8c636ea999392496ccd9a204ccccbc8cb7f417d948fd12692cda2bd02d9822" \
+  && ELIXIR_DOWNLOAD_SHA512="c97b93c7438efd7215408525a3b9f2935a1591cce3da3eb31717282d06aff94e8e3d22c405bac40c671bcfe8e73f3dd1ada315f53dee73ceef0bfe2a7c27e86d" \
   && curl -fSL -o elixir-src.tar.gz $ELIXIR_DOWNLOAD_URL \
-  && echo "$ELIXIR_DOWNLOAD_SHA256  elixir-src.tar.gz" | sha256sum -c - \
+  && echo "$ELIXIR_DOWNLOAD_SHA512  elixir-src.tar.gz" | sha512sum -c - \
   && mkdir -p /usr/local/src/elixir \
   && tar -xzC /usr/local/src/elixir --strip-components=1 -f elixir-src.tar.gz \
   && rm elixir-src.tar.gz && cd /usr/local/src/elixir && make install clean
